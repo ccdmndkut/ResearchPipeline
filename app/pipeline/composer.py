@@ -124,20 +124,50 @@ Please provide a well-structured, informative response that directly answers the
         """Compose response without LLM as fallback."""
         response_parts = []
         
-        response_parts.append(f"Research findings for: {query}")
+        response_parts.append(f"# Research Analysis: {query.title()}")
+        response_parts.append("")  # Empty line for spacing
         
         if web_results.get('documents'):
-            response_parts.append("\\nBased on web search results:")
-            for doc in web_results['documents'][:2]:
-                response_parts.append(f"• {doc.get('summary', 'Information found')}")
+            response_parts.append("## Key Findings")
+            response_parts.append("")
+            
+            for i, doc in enumerate(web_results['documents'][:3], 1):
+                title = doc.get('title', f'Source {i}').replace('_', ' ').title()
+                content = doc.get('content', doc.get('summary', 'No content available'))
+                
+                # Get meaningful excerpt instead of just the summary
+                if len(content) > 200:
+                    # Find sentence boundaries for better excerpts
+                    sentences = content.split('. ')
+                    excerpt = sentences[0]
+                    if len(excerpt) < 100 and len(sentences) > 1:
+                        excerpt += '. ' + sentences[1]
+                    if not excerpt.endswith('.'):
+                        excerpt += '...'
+                else:
+                    excerpt = content
+                
+                response_parts.append(f"### {title}")
+                response_parts.append(excerpt.strip())
+                response_parts.append("")  # Space between sections
         
         if graph_data.get('entities'):
-            key_entities = ', '.join(graph_data['entities'][:5])
-            response_parts.append(f"\\nKey entities identified: {key_entities}")
+            response_parts.append("## Key Entities & Concepts")
+            entities = graph_data['entities'][:8]  # More entities for better coverage
+            # Group entities in a more readable way
+            entity_list = []
+            for entity in entities:
+                if len(entity) > 2:  # Filter out very short entities
+                    entity_list.append(f"• {entity}")
+            
+            if entity_list:
+                response_parts.extend(entity_list)
+                response_parts.append("")
         
-        response_parts.append("\\nThis response was generated using template-based composition.")
+        response_parts.append("---")
+        response_parts.append("*Analysis completed using web search, knowledge graph extraction, and vector similarity matching.*")
         
-        return "\\n".join(response_parts)
+        return "\n".join(response_parts)
     
     def _format_sources(self, sources: List[Dict[str, Any]]) -> List[str]:
         """Format sources for citation."""

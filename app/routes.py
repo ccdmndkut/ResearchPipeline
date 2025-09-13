@@ -353,8 +353,11 @@ def register_routes(app):
             <script>
                 // Function to format text content with proper structure
                 function formatTextContent(container, text) {
+                    // Handle escaped newlines from JSON and convert to actual newlines
+                    const processedText = text.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n');
+                    
                     // Split text by double newlines for paragraphs, then by single newlines
-                    const paragraphs = text.split('\\n\\n').filter(p => p.trim());
+                    const paragraphs = processedText.split('\n\n').filter(p => p.trim());
                     
                     paragraphs.forEach((paragraph, index) => {
                         if (index > 0) {
@@ -364,7 +367,7 @@ def register_routes(app):
                             container.appendChild(spacer);
                         }
                         
-                        const lines = paragraph.split('\\n').filter(line => line.trim());
+                        const lines = paragraph.split('\n').filter(line => line.trim());
                         
                         if (lines.length === 1) {
                             // Single line paragraph
@@ -394,8 +397,37 @@ def register_routes(app):
                                     listItem.appendChild(text);
                                     
                                     section.appendChild(listItem);
+                                } else if (trimmedLine.startsWith('# ')) {
+                                    // Main heading
+                                    const heading = document.createElement('h2');
+                                    heading.style.cssText = 'font-weight: 700; color: var(--text-primary); margin: 16px 0 8px 0; font-size: 1.4em; border-bottom: 2px solid var(--primary-color); padding-bottom: 4px;';
+                                    heading.textContent = trimmedLine.replace('# ', '');
+                                    section.appendChild(heading);
+                                } else if (trimmedLine.startsWith('## ')) {
+                                    // Section heading
+                                    const heading = document.createElement('h3');
+                                    heading.style.cssText = 'font-weight: 600; color: var(--primary-color); margin: 12px 0 6px 0; font-size: 1.2em;';
+                                    heading.textContent = trimmedLine.replace('## ', '');
+                                    section.appendChild(heading);
+                                } else if (trimmedLine.startsWith('### ')) {
+                                    // Subsection heading
+                                    const heading = document.createElement('h4');
+                                    heading.style.cssText = 'font-weight: 600; color: var(--text-primary); margin: 10px 0 4px 0; font-size: 1.1em;';
+                                    heading.textContent = trimmedLine.replace('### ', '');
+                                    section.appendChild(heading);
+                                } else if (trimmedLine.startsWith('---')) {
+                                    // Horizontal rule
+                                    const hr = document.createElement('hr');
+                                    hr.style.cssText = 'border: none; border-top: 1px solid var(--border-color); margin: 16px 0;';
+                                    section.appendChild(hr);
+                                } else if (trimmedLine.startsWith('*') && trimmedLine.endsWith('*') && !trimmedLine.startsWith('* ')) {
+                                    // Italic text (emphasis)
+                                    const emphasis = document.createElement('div');
+                                    emphasis.style.cssText = 'font-style: italic; color: var(--text-secondary); margin: 8px 0; font-size: 0.95em;';
+                                    emphasis.textContent = trimmedLine.replace(/^\*|\*$/g, '');
+                                    section.appendChild(emphasis);
                                 } else if (trimmedLine.includes(':') && trimmedLine.length < 100) {
-                                    // Likely a heading or label
+                                    // Regular heading or label
                                     const heading = document.createElement('div');
                                     heading.style.cssText = 'font-weight: 600; color: var(--text-primary); margin: 8px 0 4px 0; font-size: 1.05em;';
                                     heading.textContent = trimmedLine;
