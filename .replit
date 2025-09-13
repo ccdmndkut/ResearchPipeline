@@ -6,3 +6,35 @@ integrations = ["python_openai:1.0.0", "web_scraper:1.0.0"]
 [nix]
 channel = "stable-25_05"
 packages = ["glibcLocales"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Research Pipeline Server"
+
+[[workflows.workflow]]
+name = "Research Pipeline Server"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python app/main.py"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 38303
+externalPort = 3000
