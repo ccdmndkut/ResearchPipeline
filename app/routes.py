@@ -336,14 +336,14 @@ def register_routes(app):
                         </div>
                         <button type="submit" class="submit-btn" id="submitBtn">
                             <span class="loading-spinner" id="loadingSpinner"></span>
-                            <span id="btnText">🚀 Start Research</span>
+                            <span id="btnText">Start Research</span>
                         </button>
                     </form>
                 </div>
                 
                 <div id="result" class="result">
                     <h3>
-                        <span>📊 Research Results</span>
+                        <span>Research Results</span>
                         <span class="confidence-badge" id="confidenceBadge"></span>
                     </h3>
                     <div id="resultContent" class="result-content"></div>
@@ -463,7 +463,7 @@ def register_routes(app):
                     loadingSpinner.style.display = 'inline-block';
                     btnText.textContent = 'Researching...';
                     resultDiv.style.display = 'block';
-                    resultContent.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--text-secondary);">🔍 Analyzing your query and gathering insights...</div>';
+                    resultContent.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--text-secondary);">Analyzing your query and gathering insights...</div>';
                     
                     try {
                         const response = await fetch('/query', {
@@ -504,7 +504,7 @@ def register_routes(app):
                                 sourcesDiv.className = 'sources-section';
                                 
                                 const sourcesTitle = document.createElement('h4');
-                                sourcesTitle.textContent = '📚 Sources';
+                                sourcesTitle.textContent = 'Sources';
                                 sourcesDiv.appendChild(sourcesTitle);
                                 
                                 result.sources.forEach(source => {
@@ -525,7 +525,7 @@ def register_routes(app):
                                 
                                 const entitiesTitle = document.createElement('h4');
                                 entitiesTitle.style.cssText = 'color: var(--text-secondary); margin-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;';
-                                entitiesTitle.textContent = '🏷️ Key Entities';
+                                entitiesTitle.textContent = 'Key Entities';
                                 entitiesDiv.appendChild(entitiesTitle);
                                 
                                 result.entities.forEach(entity => {
@@ -550,7 +550,7 @@ def register_routes(app):
                         errorDiv.style.cssText = 'background: #FF3B30; color: white; padding: 15px; border-radius: 8px; text-align: center;';
                         
                         const errorTitle = document.createElement('strong');
-                        errorTitle.textContent = '⚠️ Error';
+                        errorTitle.textContent = 'Error';
                         errorDiv.appendChild(errorTitle);
                         
                         errorDiv.appendChild(document.createElement('br'));
@@ -566,7 +566,7 @@ def register_routes(app):
                         // Reset button state
                         submitBtn.disabled = false;
                         loadingSpinner.style.display = 'none';
-                        btnText.textContent = '🚀 Start Research';
+                        btnText.textContent = 'Start Research';
                     }
                 });
                 
