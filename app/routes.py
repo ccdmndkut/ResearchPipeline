@@ -13,7 +13,7 @@ def register_routes(app):
     @app.route('/')
     def index():
         """Main page showing the research pipeline interface."""
-        html_template = '''
+        html_template = r'''
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -389,7 +389,7 @@ def register_routes(app):
                                     
                                     const bullet = document.createElement('span');
                                     bullet.style.cssText = 'position: absolute; left: -16px; color: var(--primary-color); font-weight: bold;';
-                                    bullet.textContent = '•';
+                                    bullet.textContent = '●';
                                     listItem.appendChild(bullet);
                                     
                                     const text = document.createElement('span');
