@@ -382,7 +382,7 @@ def register_routes(app):
                             
                             lines.forEach(line => {
                                 const trimmedLine = line.trim();
-                                if (trimmedLine.startsWith('•') || trimmedLine.startsWith('-') || trimmedLine.startsWith('*')) {
+                                if (trimmedLine.charAt(0) === '•' || trimmedLine.charAt(0) === '-' || trimmedLine.charAt(0) === '*') {
                                     // Bullet point
                                     const listItem = document.createElement('div');
                                     listItem.style.cssText = 'margin: 4px 0 4px 20px; position: relative; line-height: 1.5;';
@@ -393,7 +393,7 @@ def register_routes(app):
                                     listItem.appendChild(bullet);
                                     
                                     const text = document.createElement('span');
-                                    text.textContent = trimmedLine.replace(/^[•\-\*]\s*/, '');
+                                    text.textContent = trimmedLine.substring(1).trim();
                                     listItem.appendChild(text);
                                     
                                     section.appendChild(listItem);
@@ -420,11 +420,11 @@ def register_routes(app):
                                     const hr = document.createElement('hr');
                                     hr.style.cssText = 'border: none; border-top: 1px solid var(--border-color); margin: 16px 0;';
                                     section.appendChild(hr);
-                                } else if (trimmedLine.startsWith('*') && trimmedLine.endsWith('*') && !trimmedLine.startsWith('* ')) {
+                                } else if (trimmedLine.charAt(0) === '*' && trimmedLine.charAt(trimmedLine.length - 1) === '*' && trimmedLine.charAt(1) !== ' ') {
                                     // Italic text (emphasis)
                                     const emphasis = document.createElement('div');
                                     emphasis.style.cssText = 'font-style: italic; color: var(--text-secondary); margin: 8px 0; font-size: 0.95em;';
-                                    emphasis.textContent = trimmedLine.replace(/^\*|\*$/g, '');
+                                    emphasis.textContent = trimmedLine.substring(1, trimmedLine.length - 1);
                                     section.appendChild(emphasis);
                                 } else if (trimmedLine.includes(':') && trimmedLine.length < 100) {
                                     // Regular heading or label
