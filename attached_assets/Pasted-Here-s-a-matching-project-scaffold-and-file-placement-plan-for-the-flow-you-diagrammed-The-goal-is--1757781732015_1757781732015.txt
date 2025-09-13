@@ -1,0 +1,70 @@
+Here’s a matching project scaffold and file-placement plan for the flow you diagrammed.
+The goal is to mirror each major box in your ASCII chart with a clear Python module or function so the whole pipeline is easy to extend or swap.
+
+⸻
+
+🗂 Suggested Folder / File Layout
+
+research-pipeline/
+├─ README.md
+├─ requirements.txt
+├─ .env.example
+│
+├─ app/
+│  ├─ __init__.py
+│  ├─ main.py                # create_app(), register_routes(), run_dev()
+│  ├─ routes.py              # query(), index(), health()
+│  ├─ pipeline/
+│  │   ├─ __init__.py
+│  │   ├─ orchestrator.py    # run_pipeline(), plan_workflow(), call_llm(), merge_results()
+│  │   ├─ loaders.py         # load_documents(), validate_schema()
+│  │   ├─ graph_builder.py   # build_graph()
+│  │   ├─ cleaners.py        # clean_text(), detect_language(), chunk_text()
+│  │   ├─ vector_store.py    # index_to_vectorDB(), retrieve_docs()
+│  │   ├─ retrieval.py       # web_search(), summarize(), cite_sources()
+│  │   ├─ utils.py           # read_config(), cache_result(), slugify()
+│  │   └─ composer.py        # compose_response()
+│  ├─ templates/
+│  │   └─ index.html         # optional UI
+│  └─ static/                # optional assets
+│
+└─ tests/
+   ├─ test_routes.py
+   ├─ test_pipeline.py
+   ├─ test_graph_builder.py
+   └─ ...
+
+
+⸻
+
+🔑 Function Mapping (aligns with your diagram)
+
+Diagram Box	Suggested File	Function(s)
+create_app / register_routes / run_dev	app/main.py	create_app(), register_routes(app), run_dev()
+query / index / health	app/routes.py	query(), index(), health()
+run_pipeline / plan_workflow / call_llm / merge_results	app/pipeline/orchestrator.py	orchestrator logic, async coordination
+load_documents / validate_schema	app/pipeline/loaders.py	I/O + schema checks
+build_graph	app/pipeline/graph_builder.py	entity/relation extraction, KG creation
+clean_text / detect_language / chunk_text	app/pipeline/cleaners.py	text normalization
+index_to_vectorDB / retrieve_docs	app/pipeline/vector_store.py	embedding + semantic search
+web_search / summarize / cite_sources	app/pipeline/retrieval.py	external retrieval + summarization
+read_config / cache_result / slugify	app/pipeline/utils.py	configuration, caching helpers
+compose_response	app/pipeline/composer.py	final LLM synthesis with citations/graph
+
+
+⸻
+
+💡 Implementation Tips
+	•	Asynchronous Orchestrator
+run_pipeline() should kick off load_documents(), build_graph(), and index_to_vectorDB() in parallel with asyncio.gather where possible.
+	•	Vector Store & Graph
+	•	vector_store.py can wrap FAISS/Pinecone.
+	•	graph_builder.py could use NetworkX or Neo4j driver.
+	•	LLM Calls
+	•	Place all OpenAI API calls in call_llm() inside orchestrator.py or composer.py to keep secrets isolated.
+	•	Mock-Friendly
+	•	Each module’s functions should accept injected clients (e.g., mock vector DB) to simplify testing.
+
+⸻
+
+This scaffold matches your ASCII flow line-for-line, so anyone reading the code can jump from the diagram to the right file/function without guesswork.
