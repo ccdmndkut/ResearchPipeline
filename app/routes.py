@@ -13,7 +13,7 @@ def register_routes(app):
     @app.route('/')
     def index():
         """Main page showing the research pipeline interface."""
-        html_template = """
+        html_template = '''
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -393,7 +393,7 @@ def register_routes(app):
                                     listItem.appendChild(bullet);
                                     
                                     const text = document.createElement('span');
-                                    text.textContent = trimmedLine.replace(/^[•\\-\\*]\\s*/, '');
+                                    text.textContent = trimmedLine.replace(/^[•\-\*]\s*/, '');
                                     listItem.appendChild(text);
                                     
                                     section.appendChild(listItem);
@@ -579,7 +579,7 @@ def register_routes(app):
             </script>
         </body>
         </html>
-        """
+        '''
         return render_template_string(html_template)
     
     @app.route('/query', methods=['POST'])
