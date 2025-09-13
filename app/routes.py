@@ -351,6 +351,69 @@ def register_routes(app):
             </div>
             
             <script>
+                // Function to format text content with proper structure
+                function formatTextContent(container, text) {
+                    // Split text by double newlines for paragraphs, then by single newlines
+                    const paragraphs = text.split('\\n\\n').filter(p => p.trim());
+                    
+                    paragraphs.forEach((paragraph, index) => {
+                        if (index > 0) {
+                            // Add spacing between paragraphs
+                            const spacer = document.createElement('div');
+                            spacer.style.height = '16px';
+                            container.appendChild(spacer);
+                        }
+                        
+                        const lines = paragraph.split('\\n').filter(line => line.trim());
+                        
+                        if (lines.length === 1) {
+                            // Single line paragraph
+                            const p = document.createElement('p');
+                            p.style.cssText = 'margin: 0 0 12px 0; line-height: 1.6;';
+                            p.textContent = lines[0].trim();
+                            container.appendChild(p);
+                        } else {
+                            // Multi-line content (lists or structured data)
+                            const section = document.createElement('div');
+                            section.style.cssText = 'margin-bottom: 16px;';
+                            
+                            lines.forEach(line => {
+                                const trimmedLine = line.trim();
+                                if (trimmedLine.startsWith('•') || trimmedLine.startsWith('-') || trimmedLine.startsWith('*')) {
+                                    // Bullet point
+                                    const listItem = document.createElement('div');
+                                    listItem.style.cssText = 'margin: 4px 0 4px 20px; position: relative; line-height: 1.5;';
+                                    
+                                    const bullet = document.createElement('span');
+                                    bullet.style.cssText = 'position: absolute; left: -16px; color: var(--primary-color); font-weight: bold;';
+                                    bullet.textContent = '•';
+                                    listItem.appendChild(bullet);
+                                    
+                                    const text = document.createElement('span');
+                                    text.textContent = trimmedLine.replace(/^[•\\-\\*]\\s*/, '');
+                                    listItem.appendChild(text);
+                                    
+                                    section.appendChild(listItem);
+                                } else if (trimmedLine.includes(':') && trimmedLine.length < 100) {
+                                    // Likely a heading or label
+                                    const heading = document.createElement('div');
+                                    heading.style.cssText = 'font-weight: 600; color: var(--text-primary); margin: 8px 0 4px 0; font-size: 1.05em;';
+                                    heading.textContent = trimmedLine;
+                                    section.appendChild(heading);
+                                } else if (trimmedLine) {
+                                    // Regular text line
+                                    const textLine = document.createElement('div');
+                                    textLine.style.cssText = 'margin: 4px 0; line-height: 1.6;';
+                                    textLine.textContent = trimmedLine;
+                                    section.appendChild(textLine);
+                                }
+                            });
+                            
+                            container.appendChild(section);
+                        }
+                    });
+                }
+                
                 document.getElementById('queryForm').addEventListener('submit', async function(e) {
                     e.preventDefault();
                     const query = document.getElementById('queryInput').value.trim();
@@ -393,10 +456,14 @@ def register_routes(app):
                             // Safely format the response using DOM manipulation
                             resultContent.innerHTML = ''; // Clear content first
                             
-                            // Create answer section safely
+                            // Create answer section with proper formatting
                             const answerDiv = document.createElement('div');
                             answerDiv.className = 'answer-section';
-                            answerDiv.textContent = result.answer || 'No answer generated';
+                            
+                            // Format the answer text properly
+                            const answerText = result.answer || 'No answer generated';
+                            formatTextContent(answerDiv, answerText);
+                            
                             resultContent.appendChild(answerDiv);
                             
                             // Create sources section safely
