@@ -81,6 +81,9 @@ Please provide a well-structured, informative response that directly answers the
 
             # the newest OpenAI model is "gpt-5" which was released August 7, 2025.
             # do not change this unless explicitly requested by the user
+            if not self.openai_client:
+                return "OpenAI client not available. Using fallback response."
+                
             response = self.openai_client.chat.completions.create(
                 model="gpt-5",
                 messages=[{"role": "user", "content": prompt}],
@@ -88,7 +91,7 @@ Please provide a well-structured, informative response that directly answers the
                 temperature=0.7
             )
             
-            return response.choices[0].message.content
+            return response.choices[0].message.content or "No response generated"
             
         except Exception as e:
             return f"LLM synthesis failed: {str(e)}. Using fallback response composition."

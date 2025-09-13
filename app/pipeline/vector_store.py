@@ -72,7 +72,9 @@ class VectorStore:
         embedding = np.random.randn(self.dimension)
         
         # Normalize
-        embedding = embedding / np.linalg.norm(embedding)
+        norm = np.linalg.norm(embedding)
+        if norm > 0:
+            embedding = embedding / norm
         
         return embedding.astype('float32')
     
@@ -82,7 +84,7 @@ class VectorStore:
             return {'similar_docs': [], 'scores': []}
         
         query_vector = query_embedding.reshape(1, -1).astype('float32')
-        scores, indices = self.index.search(query_vector, min(k, self.index.ntotal))
+        distances, indices = self.index.search(query_vector, min(k, self.index.ntotal))
         
         similar_docs = []
         for idx in indices[0]:
@@ -91,6 +93,6 @@ class VectorStore:
         
         return {
             'similar_docs': similar_docs,
-            'scores': scores[0].tolist(),
+            'scores': distances[0].tolist(),
             'total_indexed': self.index.ntotal
         }
