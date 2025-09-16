@@ -55,3 +55,9 @@
 {"timestamp": "2025-09-16T02:17:28.967317", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: bengals supterbowl odds (type: general)", "module": "search_agent", "function": "search_web", "line": 53}
 {"timestamp": "2025-09-16T02:19:43.598119", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
 {"timestamp": "2025-09-16T02:19:43.949274", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:25:35.461145", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:25:35.840534", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:25:57.167474", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:25:57.528119", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:26:02.124600", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: bengals schedule (session: 1757989562122)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T02:26:02.171292", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: bengals schedule (type: general)", "module": "search_agent", "function": "search_web", "line": 53}
