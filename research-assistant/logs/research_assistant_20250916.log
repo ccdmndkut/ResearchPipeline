@@ -92,3 +92,6 @@
 {"timestamp": "2025-09-16T05:41:24.811169", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
 {"timestamp": "2025-09-16T05:41:47.249488", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
 {"timestamp": "2025-09-16T05:41:47.356019", "level": "INFO", "logger": "app.main", "message": "Shutting down Research Assistant API", "module": "main", "function": "lifespan", "line": 19}
+{"timestamp": "2025-09-16T05:41:52.038140", "level": "INFO", "logger": "app.agents.search_agent", "message": "Using optimized web search prompts", "module": "search_agent", "function": "__init__", "line": 44}
+{"timestamp": "2025-09-16T05:41:52.071993", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-16T05:41:52.105080", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
