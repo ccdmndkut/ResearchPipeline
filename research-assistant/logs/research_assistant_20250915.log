@@ -1,2 +1,57 @@
-{"timestamp": "2025-09-16T00:01:49.584955", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
-{"timestamp": "2025-09-16T00:03:58.961778", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:18:26.770970", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:18:27.139717", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:18:35.054535", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:18:35.420935", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:22:40.818186", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:22:41.185938", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:22:46.306844", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: joe burrow (session: 1757982166305)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T00:22:46.354467", "level": "INFO", "logger": "app.agents.search_agent", "message": "Searching for: joe burrow in ['arxiv', 'semantic_scholar']", "module": "search_agent", "function": "search_literature", "line": 57}
+{"timestamp": "2025-09-16T00:23:02.415800", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-16T00:23:03.471073", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:23:12.178017", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: joe burrow (session: 1757982192175)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T00:23:12.232569", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: joe burrow", "module": "search_agent", "function": "search_web", "line": 49}
+{"timestamp": "2025-09-16T00:23:13.129651", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web search executed for: {\"query\":\"Joe Burrow recent news 2023\"}", "module": "search_agent", "function": "search_web", "line": 101}
+{"timestamp": "2025-09-16T00:24:25.860909", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: ai doom (session: 1757982265858)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T00:24:25.916850", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: ai doom", "module": "search_agent", "function": "search_web", "line": 49}
+{"timestamp": "2025-09-16T00:24:29.288549", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web search executed for: {\"query\": \"AI doom existential risk site:arxiv.org\"}", "module": "search_agent", "function": "search_web", "line": 101}
+{"timestamp": "2025-09-16T00:24:29.288747", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web search executed for: {\"query\": \"AI doom existential risk site:scholar.google.com\"}", "module": "search_agent", "function": "search_web", "line": 101}
+{"timestamp": "2025-09-16T00:25:06.914945", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:25:07.338902", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:25:11.269829", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:25:11.376722", "level": "INFO", "logger": "app.main", "message": "Shutting down Research Assistant API", "module": "main", "function": "lifespan", "line": 19}
+{"timestamp": "2025-09-16T00:25:14.928209", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-16T00:25:15.106186", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:26:09.486636", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:26:09.592585", "level": "INFO", "logger": "app.main", "message": "Shutting down Research Assistant API", "module": "main", "function": "lifespan", "line": 19}
+{"timestamp": "2025-09-16T00:26:12.534240", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-16T00:26:12.816547", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:26:15.012808", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:26:15.445056", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:26:17.836641", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: joe burrow (session: 1757982377834)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T00:26:17.886112", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: joe burrow (type: general)", "module": "search_agent", "function": "search_web", "line": 53}
+{"timestamp": "2025-09-16T00:26:55.970032", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: joe burrow injury this week (session: 1757982415968)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T00:26:56.013863", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: joe burrow injury this week (type: general)", "module": "search_agent", "function": "search_web", "line": 53}
+{"timestamp": "2025-09-16T00:30:26.521683", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:30:26.934373", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T00:30:28.089239", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T00:51:40.137931", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-16T00:51:53.746275", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:11:56.494193", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:11:56.872896", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:13:33.014316", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:13:33.359382", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:14:04.575672", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:14:04.924723", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:16:02.898663", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:16:03.281217", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:17:14.382797", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:17:17.861479", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-16T02:17:18.218411", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:17:21.242568", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:17:21.600684", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:17:22.296145", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:17:22.654667", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-16T02:17:28.923456", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: bengals supterbowl odds (session: 1757989048921)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-16T02:17:28.967317", "level": "INFO", "logger": "app.agents.search_agent", "message": "Web searching for: bengals supterbowl odds (type: general)", "module": "search_agent", "function": "search_web", "line": 53}
+{"timestamp": "2025-09-16T02:19:43.598119", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-16T02:19:43.949274", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}

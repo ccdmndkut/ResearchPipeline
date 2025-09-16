@@ -1,21 +1,22 @@
 # ResearchPipeline
 
-ResearchPipeline helps quantitative researchers prototype day-trading strategies faster by pairing an AI-first research assistant with a modular Python pipeline for data ingestion, feature engineering, and backtesting.
 
 ## Table of Contents
-- [Highlights](#highlights)
-- [Repository Layout](#repository-layout)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-  - [Clone and Bootstrap](#clone-and-bootstrap)
-  - [Run the Flask Pipeline](#run-the-flask-pipeline)
-  - [Run the Research Assistant](#run-the-research-assistant)
-- [Configuration](#configuration)
-- [Testing](#testing)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Disclaimer](#disclaimer)
+- [ResearchPipeline](#researchpipeline)
+  - [Table of Contents](#table-of-contents)
+  - [Highlights](#highlights)
+  - [Repository Layout](#repository-layout)
+  - [Prerequisites](#prerequisites)
+  - [Quick Start](#quick-start)
+    - [Clone and Bootstrap](#clone-and-bootstrap)
+    - [Run the Flask Pipeline](#run-the-flask-pipeline)
+    - [Run the Research Assistant](#run-the-research-assistant)
+  - [Configuration](#configuration)
+  - [Testing](#testing)
+  - [Roadmap](#roadmap)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Disclaimer](#disclaimer)
 
 ## Highlights
 - **Dual workflow support**: experiment with market data locally while querying the AI assistant for papers, summaries, and citations.
@@ -26,14 +27,14 @@ ResearchPipeline helps quantitative researchers prototype day-trading strategies
 ## Repository Layout
 ```
 ResearchPipeline/
-|-- app/                  # Flask entry-point and modular research pipeline
-|   |-- main.py           # Application factory and dev runner
-|   `-- pipeline/         # Loaders, cleaners, graph builder, orchestration, vector store helpers
-|-- research-assistant/   # FastAPI research assistant (OpenAI + multi-agent system)
-|-- GenAIPlanPilot/       # Experimental full-stack prototype (React + FastAPI)
-|-- pyproject.toml        # Root Python project definition
-|-- uv.lock               # uv resolver lockfile
-`-- README.md
+├─ app/                   # Flask entry-point and modular research pipeline
+│  ├─ main.py             # Application factory and dev runner
+│  └─ pipeline/           # Loaders, cleaners, graph builder, orchestration, vector store helpers
+├─ research-assistant/    # FastAPI research assistant (OpenAI + multi-agent system)
+├─ GenAIPlanPilot/        # Experimental full-stack prototype (React + FastAPI)
+├─ pyproject.toml         # Root Python project definition
+├─ uv.lock                # uv resolver lockfile
+└─ README.md
 ```
 
 ## Prerequisites

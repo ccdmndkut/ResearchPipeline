@@ -125,6 +125,11 @@ class ResearchOrchestrator:
         """
         Create a simple execution plan (simplified for now)
         """
+        # Determine search type based on parameters or query
+        search_type = "general"
+        if "academic" in query.lower() or "research" in query.lower() or "paper" in query.lower():
+            search_type = "academic"
+
         # For now, just do a search - we can make this smarter later
         plan = {
             "query": query,
@@ -134,7 +139,7 @@ class ResearchOrchestrator:
                     "action": "search",
                     "parameters": {
                         "query": query,
-                        "databases": parameters.get("databases", ["arxiv", "semantic_scholar"]),
+                        "search_type": search_type,
                         "max_results": parameters.get("max_results", 20)
                     }
                 }

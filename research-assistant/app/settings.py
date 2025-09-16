@@ -1,8 +1,15 @@
 import os
 from pathlib import Path
 from typing import Optional
-from pydantic_settings import BaseSettings
+
+from dotenv import load_dotenv
 from pydantic import Field
+from pydantic_settings import BaseSettings
+
+ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
+if ENV_PATH.exists():
+    load_dotenv(ENV_PATH, override=True)
+
 
 class Settings(BaseSettings):
     # API Keys
@@ -80,4 +87,6 @@ class Settings(BaseSettings):
         self.TEMP_DIR.mkdir(parents=True, exist_ok=True)
         self.LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
+
 settings = Settings()
+
