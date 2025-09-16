@@ -1,0 +1,25 @@
+{"timestamp": "2025-09-14T17:36:25.321109", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-14T17:36:27.301900", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T17:36:32.713577", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: ai agents (session: 1757871392712)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-14T17:36:32.767645", "level": "INFO", "logger": "app.agents.search_agent", "message": "Searching for: ai agents in ['arxiv', 'semantic_scholar']", "module": "search_agent", "function": "search_literature", "line": 57}
+{"timestamp": "2025-09-14T17:37:23.804588", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-14T17:37:23.862214", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T17:37:38.810164", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: nfl (session: 1757871458809)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-14T17:37:38.862102", "level": "INFO", "logger": "app.agents.search_agent", "message": "Searching for: nfl in ['arxiv', 'semantic_scholar']", "module": "search_agent", "function": "search_literature", "line": 57}
+{"timestamp": "2025-09-14T17:37:58.556974", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-14T17:37:58.612416", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T17:38:02.794437", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: bengals game (session: 1757871482793)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-14T17:38:02.843327", "level": "INFO", "logger": "app.agents.search_agent", "message": "Searching for: bengals game in ['arxiv', 'semantic_scholar']", "module": "search_agent", "function": "search_literature", "line": 57}
+{"timestamp": "2025-09-14T17:38:15.089763", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-14T17:38:15.124962", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T17:38:18.127023", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-14T17:38:18.172492", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T17:38:29.356478", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T17:38:30.485009", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-14T17:38:31.103106", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-14T17:38:35.918986", "level": "INFO", "logger": "app.main", "message": "Shutting down Research Assistant API", "module": "main", "function": "lifespan", "line": 19}
+{"timestamp": "2025-09-14T17:38:39.593955", "level": "INFO", "logger": "app.main", "message": "Starting Research Assistant API", "module": "main", "function": "lifespan", "line": 17}
+{"timestamp": "2025-09-14T17:38:40.098413", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-14T21:39:06.881621", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}
+{"timestamp": "2025-09-15T01:08:45.672637", "level": "INFO", "logger": "app.main", "message": "WebSocket connection established", "module": "main", "function": "research_websocket", "line": 49}
+{"timestamp": "2025-09-15T05:12:18.315385", "level": "INFO", "logger": "app.main", "message": "WebSocket disconnected", "module": "main", "function": "research_websocket", "line": 71}

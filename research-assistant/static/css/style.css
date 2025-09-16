@@ -1,0 +1,156 @@
+/* Additional custom styles for Research Assistant */
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    --primary-color: #3b82f6;
+    --secondary-color: #1e40af;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --border-color: #cbd5e1;
+    --success-color: #22c55e;
+    --error-color: #dc2626;
+    --warning-color: #eab308;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --border-color: #475569;
+    }
+
+    body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .main-panel,
+    .side-panel {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    .event-card {
+        background: var(--bg-secondary);
+    }
+
+    .event-data {
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+    }
+
+    #queryInput {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    .option-chip {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+    }
+
+    .agent-item {
+        background: var(--bg-secondary);
+    }
+
+    .header {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .side-panel {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.25rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+
+    .query-input-group {
+        flex-direction: column;
+    }
+
+    #submitBtn {
+        width: 100%;
+    }
+
+    .options {
+        justify-content: center;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .side-panel,
+    .query-section {
+        display: none;
+    }
+
+    .main-panel {
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .event-card {
+        break-inside: avoid;
+    }
+}
+
+/* Accessibility improvements */
+button:focus,
+input:focus,
+.option-chip:focus,
+.agent-item:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}

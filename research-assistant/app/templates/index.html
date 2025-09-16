@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .main-panel {
+            flex: 2;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .side-panel {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .query-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .query-input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        #queryInput {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        #queryInput:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        #submitBtn {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #submitBtn:hover {
+            transform: translateY(-2px);
+        }
+
+        #submitBtn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .option-chip {
+            padding: 0.5rem 1rem;
+            background: #f3f4f6;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .option-chip.active {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .results-section {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .event-card {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-type {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .event-time {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .event-message {
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        .event-data {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-indicator.connected {
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.disconnected {
+            background: #dc2626;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .agent-list h3 {
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .agent-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .agent-item:hover {
+            background: #f3f4f6;
+        }
+
+        .agent-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .agent-description {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #3b82f6;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Research Assistant</h1>
+    </div>
+
+    <div class="container">
+        <div class="main-panel">
+            <div class="query-section">
+                <div class="query-input-group">
+                    <input
+                        type="text"
+                        id="queryInput"
+                        placeholder="Enter your research query..."
+                        autocomplete="off"
+                    >
+                    <button id="submitBtn">Search</button>
+                </div>
+                <div class="options">
+                    <div class="option-chip" data-db="arxiv">arXiv</div>
+                    <div class="option-chip" data-db="semantic_scholar">Semantic Scholar</div>
+                    <div class="option-chip" data-db="pubmed">PubMed</div>
+                    <div class="option-chip active" data-action="search">Search</div>
+                    <div class="option-chip" data-action="summarize">Summarize</div>
+                    <div class="option-chip" data-action="analyze">Analyze</div>
+                </div>
+            </div>
+            <div class="results-section" id="results">
+                <div style="text-align: center; color: #6b7280; padding: 3rem;">
+                    <p>Enter a research query to begin</p>
+                    <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                        <span class="status-indicator disconnected"></span>
+                        <span id="connectionStatus">Disconnected</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <div class="agent-list">
+                <h3>Available Agents</h3>
+                <div id="agentList">
+                    <div class="agent-item">
+                        <div class="agent-name">Search Agent</div>
+                        <div class="agent-description">Search academic databases</div>
+                    </div>
+                    <div class="agent-item">
+                        <div class="agent-name">Summarizer Agent</div>
+                        <div class="agent-description">Create paper summaries</div>
+                    </div>
+                    <div class="agent-item">
+                        <div class="agent-name">Citation Agent</div>
+                        <div class="agent-description">Verify citations</div>
+                    </div>
+                    <div class="agent-item">
+                        <div class="agent-name">Graph Agent</div>
+                        <div class="agent-description">Analyze citation networks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let ws = null;
+        let isConnected = false;
+
+        function connectWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            ws = new WebSocket(`${protocol}//${window.location.host}/ws`);
+
+            ws.onopen = () => {
+                isConnected = true;
+                updateConnectionStatus(true);
+                console.log('WebSocket connected');
+            };
+
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                handleEvent(data);
+            };
+
+            ws.onclose = () => {
+                isConnected = false;
+                updateConnectionStatus(false);
+                console.log('WebSocket disconnected');
+                // Reconnect after 3 seconds
+                setTimeout(connectWebSocket, 3000);
+            };
+
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+        }
+
+        function updateConnectionStatus(connected) {
+            const statusEl = document.getElementById('connectionStatus');
+            const indicators = document.querySelectorAll('.status-indicator');
+
+            if (connected) {
+                statusEl.textContent = 'Connected';
+                indicators.forEach(el => {
+                    el.classList.remove('disconnected');
+                    el.classList.add('connected');
+                });
+            } else {
+                statusEl.textContent = 'Disconnected';
+                indicators.forEach(el => {
+                    el.classList.remove('connected');
+                    el.classList.add('disconnected');
+                });
+            }
+        }
+
+        function handleEvent(event) {
+            const resultsDiv = document.getElementById('results');
+
+            if (event.event_type === 'acknowledgment') {
+                resultsDiv.innerHTML = `
+                    <div class="event-card">
+                        <div class="loading-spinner"></div>
+                        <span style="margin-left: 1rem;">${event.message}</span>
+                    </div>
+                `;
+            } else {
+                const eventCard = createEventCard(event);
+                resultsDiv.appendChild(eventCard);
+                resultsDiv.scrollTop = resultsDiv.scrollHeight;
+            }
+
+            if (event.event_type === 'complete' || event.event_type === 'error') {
+                document.getElementById('submitBtn').disabled = false;
+            }
+        }
+
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = 'event-card';
+
+            const timestamp = new Date(event.timestamp || Date.now()).toLocaleTimeString();
+
+            card.innerHTML = `
+                <div class="event-header">
+                    <span class="event-type">${event.agent || 'System'} - ${event.event_type}</span>
+                    <span class="event-time">${timestamp}</span>
+                </div>
+                <div class="event-message">${event.message}</div>
+                ${event.data && Object.keys(event.data).length > 0 ? `
+                    <div class="event-data">
+                        <pre>${JSON.stringify(event.data, null, 2)}</pre>
+                    </div>
+                ` : ''}
+            `;
+
+            return card;
+        }
+
+        function submitQuery() {
+            if (!isConnected) {
+                alert('Not connected to server. Please wait...');
+                return;
+            }
+
+            const query = document.getElementById('queryInput').value.trim();
+            if (!query) {
+                alert('Please enter a query');
+                return;
+            }
+
+            // Get selected options
+            const databases = Array.from(document.querySelectorAll('.option-chip[data-db].active'))
+                .map(el => el.dataset.db);
+
+            const action = document.querySelector('.option-chip[data-action].active')?.dataset.action || 'search';
+
+            const request = {
+                query: query,
+                parameters: {
+                    databases: databases.length > 0 ? databases : ['arxiv', 'semantic_scholar'],
+                    action: action,
+                    max_results: 20
+                },
+                session_id: Date.now().toString()
+            };
+
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('results').innerHTML = '';
+
+            ws.send(JSON.stringify(request));
+        }
+
+        // Event listeners
+        document.getElementById('submitBtn').addEventListener('click', submitQuery);
+
+        document.getElementById('queryInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitQuery();
+            }
+        });
+
+        // Option chips toggle
+        document.querySelectorAll('.option-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                if (chip.dataset.db) {
+                    chip.classList.toggle('active');
+                } else if (chip.dataset.action) {
+                    document.querySelectorAll('.option-chip[data-action]').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    chip.classList.add('active');
+                }
+            });
+        });
+
+        // Load agent list
+        fetch('/api/agents')
+            .then(res => res.json())
+            .then(data => {
+                const agentList = document.getElementById('agentList');
+                agentList.innerHTML = '';
+
+                Object.entries(data).forEach(([name, description]) => {
+                    const item = document.createElement('div');
+                    item.className = 'agent-item';
+                    item.innerHTML = `
+                        <div class="agent-name">${name.charAt(0).toUpperCase() + name.slice(1)} Agent</div>
+                        <div class="agent-description">${description}</div>
+                    `;
+                    agentList.appendChild(item);
+                });
+            })
+            .catch(err => console.error('Failed to load agents:', err));
+
+        // Connect WebSocket on load
+        connectWebSocket();
+    </script>
+</body>
+</html>

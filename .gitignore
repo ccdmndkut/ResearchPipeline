@@ -1,0 +1,50 @@
+# Python cache artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.dmypy.json
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Coverage and build outputs
+htmlcov/
+.coverage
+.coverage.*
+
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Node/JavaScript caches
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+.next/
+.nuxt/
+.turbo/
+.parcel-cache/
+.vite/
+.svelte-kit/
+dist-ssr/
+
+# Tooling caches
+.jspm/
+.cache/
+.docusaurus/
+
+# dotenv overrides (keep .env.example tracked)
+.env
+.env.local
+.env.*.local

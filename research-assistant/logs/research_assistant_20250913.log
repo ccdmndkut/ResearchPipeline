@@ -1,0 +1,3 @@
+{"timestamp": "2025-09-13T18:14:14.958579", "level": "INFO", "logger": "app.agents.search_agent_simple", "message": "Searching for: machine learning in ['arxiv']", "module": "search_agent_simple", "function": "search_literature", "line": 48}
+{"timestamp": "2025-09-14T02:14:09.907017", "level": "INFO", "logger": "app.orchestrator.orchestrator", "message": "Processing query: machine learning (session: test_session)", "module": "orchestrator", "function": "process_query", "line": 57}
+{"timestamp": "2025-09-14T02:14:09.907236", "level": "INFO", "logger": "app.agents.search_agent", "message": "Searching for: machine learning in ['arxiv']", "module": "search_agent", "function": "search_literature", "line": 57}
