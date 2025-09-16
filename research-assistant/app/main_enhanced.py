@@ -23,6 +23,7 @@ from app.agents.response_formatter import (
     CitationStyle
 )
 from app.utils.logging_config import setup_logging
+from app.experiments.ab_testing import ABTestingFramework
 
 logger = setup_logging(__name__)
 
@@ -107,6 +108,7 @@ async def lifespan(app: FastAPI):
     
     # Initialize services
     app.state.connection_manager = ConnectionManager()
+    app.state.ab_testing = ABTestingFramework()
     
     if FEATURE_FLAGS["enhanced_orchestrator"]:
         app.state.orchestrator = EnhancedOrchestrator()
@@ -210,7 +212,14 @@ async def websocket_endpoint(websocket: WebSocket):
             manager.session_data[client_id]["last_activity"] = datetime.now()
             
             # Process request
-            await process_research_request(websocket, request, client_id)
+            if request.get("type") == "feedback":
+                if FEATURE_FLAGS["feedback_loop"]:
+                    await app.state.orchestrator.feedback_loop.store_feedback(
+                        request.get("session_id"),
+                        request.get("feedback")
+                    )
+            else:
+                await process_research_request(websocket, request, client_id)
             
     except WebSocketDisconnect:
         manager.disconnect(client_id)

@@ -1,9 +1,30 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "WebFetch(domain:platform.openai.com)"
+      "WebFetch(domain:platform.openai.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:scholar.google.com)",
+      "WebFetch(domain:ieee.org)",
+      "WebFetch(domain:acm.org)",
+      "WebFetch(domain:jstor.org)",
+      "WebFetch(domain:springer.com)",
+      "WebFetch(domain:elsevier.com)",
+      "WebFetch(domain:wiley.com)",
+      "WebFetch(domain:nature.com)",
+      "WebFetch(domain:science.org)",
+      "WebFetch(domain:researchgate.net)",
+      "WebFetch(domain:semanticscholar.org)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": [],
-    "ask": []
-  }
+    "ask": [],
+    "defaultMode": "default"
+  },
+  "includeCoAuthoredBy": true,
+  "cleanupPeriodDays": 30,
+  "spinnerTipsEnabled": true,
+  "enableAllProjectMcpServers": true
 }

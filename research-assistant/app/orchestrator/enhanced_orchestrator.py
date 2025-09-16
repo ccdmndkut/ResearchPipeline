@@ -17,6 +17,8 @@ from app.utils.prompt_loader import load_prompt
 from app.agents import SearchAgent, SummarizerAgent, CitationAgent, GraphAgent
 from app.tools import PDFParser, VectorSearch, WebFetch, StatsUtil
 from app.utils.logging_config import setup_logging
+from app.utils.redis_cache import ResearchCache
+from app.feedback.feedback_system import FeedbackLoop
 
 logger = setup_logging(__name__)
 
@@ -571,6 +573,7 @@ class EnhancedOrchestrator:
         self.task_planner = TaskPlanner()
         self.parallel_executor = ParallelExecutor()
         self.quality_scorer = QualityScorer()
+        self.feedback_loop = FeedbackLoop()
         
         # Initialize agents
         self.agents = {
@@ -590,7 +593,7 @@ class EnhancedOrchestrator:
         
         # Performance metrics
         self.metrics = defaultdict(list)
-        self.cache = {}  # Simple in-memory cache (replace with Redis in production)
+        self.cache = ResearchCache()
         
     async def process_query(
         self,
@@ -617,9 +620,10 @@ class EnhancedOrchestrator:
             )
             
             # Check cache
-            if analysis.cache_key in self.cache:
+            cache_key = self.cache.generate_key(query, parameters)
+            cached_result = await self.cache.get(cache_key)
+            if cached_result:
                 logger.info(f"Cache hit for query: {query}")
-                cached_result = self.cache[analysis.cache_key]
                 yield self._create_event(
                     "cache_hit",
                     "orchestrator",
@@ -670,7 +674,7 @@ class EnhancedOrchestrator:
             final_result = await self._synthesize_results(query, scored_results)
             
             # Cache results
-            self.cache[analysis.cache_key] = final_result
+            await self.cache.set(analysis.cache_key, final_result)
             
             # Record metrics
             execution_time = (datetime.now() - start_time).total_seconds()
